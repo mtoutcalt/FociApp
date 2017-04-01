@@ -39,7 +39,7 @@ import foci.bu.outcalt.fociapp.todo.db.TaskDbHelper;
     and Android Studio 2.2 Development Essentials by Neil Smyth
  */
 public class ToDoActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
-
+    //testing github
     private static final String TAG = "StateChange";
     private TaskDbHelper taskDbHelper;
     private ListView taskListView;
