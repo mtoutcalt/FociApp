@@ -96,7 +96,7 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
                                 SQLiteDatabase db = taskDbHelper.getWritableDatabase();
                                 ContentValues values = new ContentValues();
                                 values.put(TaskContract.TaskEntry.COL_TASK_TITLE, task);
-//                                values.put(TaskContract.TaskEntry.COL_TASK_DATE_CREATED, createCurrentTime());
+                                values.put(TaskContract.TaskEntry.COL_TASK_DATE_CREATED, createCurrentTime());
                                 db.insertWithOnConflict(TaskContract.TaskEntry.TABLE,
                                         null,
                                         values,
@@ -136,7 +136,7 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
     private void updateUI() {
         ArrayList<String> taskList = new ArrayList<>();
         SQLiteDatabase db = taskDbHelper.getReadableDatabase();
-        String[] projection = {TaskContract.TaskEntry._ID};
+        String[] projection = {TaskContract.TaskEntry._ID, TaskContract.TaskEntry.COL_TASK_TITLE, TaskContract.TaskEntry.COL_TASK_DATE_CREATED};
 
         Cursor cursor = db.query(
                 TaskContract.TaskEntry.TABLE,  //table
