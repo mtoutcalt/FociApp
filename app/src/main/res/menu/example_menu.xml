@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="cs683.bu.outcalt.foci.Menu_Example" >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_red"
+            android:title="red" />
+        <item
+            android:id="@+id/menu_blue"
+            android:title="blue" />
+        <item
+            android:id="@+id/menu_green"
+            android:title="green" />
+        <item
+            android:id="@+id/menu_yellow"
+            android:title="yellow" />
+    </group>
+</menu>
