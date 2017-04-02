@@ -37,6 +37,8 @@ public class HabitActivity extends AppCompatActivity {
 
     private static final String TAG = "StateChange";
     private static final int PERMISSION_REQUEST_CODE = 1;
+    public static final String EXTRA_MESSAGE = "foci.bu.outcalt.fociapp.MESSAGE";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,6 +171,13 @@ public class HabitActivity extends AppCompatActivity {
         }
     }
 
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, BreakChainActivity.class);
+        EditText editText = (EditText) findViewById(R.id.habitDurationText);
+        String duration = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, duration);
+        startActivity(intent);
+    }
 
 
     @Override
