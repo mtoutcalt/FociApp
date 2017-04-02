@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import foci.bu.outcalt.fociapp.BaseActivity;
@@ -45,6 +49,27 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         setSupportActionBar(myToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+
+        animateSailboat();
+    }
+
+    private void animateSailboat() {
+        final ImageView image =(ImageView) this.findViewById(R.id.sailboat);
+
+        final TranslateAnimation sailboatAnimation = new TranslateAnimation(0, 1200, 0, 0);
+        sailboatAnimation.setDuration(6000);
+        sailboatAnimation.setFillAfter(true);
+        sailboatAnimation.setRepeatCount(3);
+        sailboatAnimation.setRepeatMode(2);
+
+        Button button = (Button) this.findViewById(R.id.button4);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                image.startAnimation(sailboatAnimation);
+            }
+
+        });
     }
 
     @Override
