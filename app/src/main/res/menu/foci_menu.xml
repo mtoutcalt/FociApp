@@ -5,16 +5,16 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/menu_red"
-            android:title="red" />
+            android:id="@+id/menu_home"
+            android:title="Home" />
         <item
-            android:id="@+id/menu_blue"
-            android:title="blue" />
+            android:id="@+id/menu_timer"
+            android:title="Timer" />
         <item
-            android:id="@+id/menu_green"
-            android:title="green" />
+            android:id="@+id/menu_todo"
+            android:title="Todo" />
         <item
-            android:id="@+id/menu_yellow"
-            android:title="yellow" />
+            android:id="@+id/menu_habit"
+            android:title="Habit" />
     </group>
 </menu>

@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
 
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(TITLE);
-        collapsingToolbarLayout.setContentScrimColor(Color.GREEN);
+        collapsingToolbarLayout.setContentScrimColor(Color.RED);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(this);

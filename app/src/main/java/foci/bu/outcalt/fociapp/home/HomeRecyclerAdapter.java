@@ -1,5 +1,7 @@
 package foci.bu.outcalt.fociapp.home;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,10 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import foci.bu.outcalt.fociapp.R;
+import foci.bu.outcalt.fociapp.habit.HabitActivity;
+import foci.bu.outcalt.fociapp.timer.TimerActivity;
+import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
 
-public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder> {
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -25,47 +32,55 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             itemTitle = (TextView)itemView.findViewById(R.id.item_title);
             itemDetail = (TextView)itemView.findViewById(R.id.item_detail);
 
-            itemTitle.setText(titles[0]);
-            itemDetail.setText(details[0]);
-            itemImage.setImageResource(images[0]);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v)
                 {
+                    Context context = v.getContext();
+                    Intent intent;
                     int position = getAdapterPosition();
-                    Snackbar.make(v, "Click detected on item " + position, Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
 
+                    switch (position) {
+                        case 0:
+                            intent = new Intent(context, TimerActivity.class);
+                            context.startActivity(intent);
+                            break;
+                        case 1:
+                            intent = new Intent(context, ToDoActivity.class);
+                            context.startActivity(intent);
+                            break;
+                        case 2:
+                            intent = new Intent(context, HabitActivity.class);
+                            context.startActivity(intent);
+                            break;
+                        default: break;
+                    }
                 }
             });
         }
     }
 
-    private String[] titles = {"Chapter One",
-            "Chapter Two", "Chapter Three",
-            "Chapter Four", "Chapter Five",
-            "Chapter Six", "Chapter Seven",
-            "Chapter Eight"};
+    private String[] titles = {"Timer",
+            "TODO", "Habit"};
 
-    private String[] details = {"Item one details", "Item two details",
-            "Item three details", "Item four details",
-            "Item file details", "Item six details",
-            "Item seven details", "Item eight details"};
-
+    private String[] details = {"Pomodoro Timer", "Todo List",
+            "Don't Break the Chain"};
     private int[] images = {
-            R.drawable.chart
+            R.drawable.pomodoro, R.drawable.ic_done_all_black_24dp,
+            R.drawable.ic_event_black_24dp
     };
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.home_content_card_layout, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-
+    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+        viewHolder.itemTitle.setText(titles[position]);
+        viewHolder.itemDetail.setText(details[position]);
+        viewHolder.itemImage.setImageResource(images[position]);
     }
 
     @Override

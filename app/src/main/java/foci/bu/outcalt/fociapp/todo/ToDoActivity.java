@@ -31,6 +31,9 @@ import java.util.Date;
 
 import foci.bu.outcalt.fociapp.BaseActivity;
 import foci.bu.outcalt.fociapp.R;
+import foci.bu.outcalt.fociapp.habit.HabitActivity;
+import foci.bu.outcalt.fociapp.home.HomeActivity;
+import foci.bu.outcalt.fociapp.timer.TimerActivity;
 import foci.bu.outcalt.fociapp.todo.db.TaskContract;
 import foci.bu.outcalt.fociapp.todo.db.TaskDbHelper;
 
@@ -39,7 +42,7 @@ import foci.bu.outcalt.fociapp.todo.db.TaskDbHelper;
     and Android Studio 2.2 Development Essentials by Neil Smyth
  */
 public class ToDoActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
-    //testing github
+
     private static final String TAG = "StateChange";
     private TaskDbHelper taskDbHelper;
     private ListView taskListView;
@@ -189,37 +192,29 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
+        inflater.inflate(R.menu.foci_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
-            case R.id.menu_red:
-                Intent intent = new Intent(this, BaseActivity.class);
+            case R.id.menu_home:
+                intent = new Intent(this, HomeActivity.class);
                 this.startActivity(intent);
                 return true;
-            case R.id.menu_green:
-                if (item.isChecked()) {
-                    item.setChecked(false);
-                } else {
-                    item.setChecked(true);
-                }
+            case R.id.menu_todo:
+                intent = new Intent(this, ToDoActivity.class);
+                this.startActivity(intent);
                 return true;
-            case R.id.menu_yellow:
-                if (item.isChecked()) {
-                    item.setChecked(false);
-                } else {
-                    item.setChecked(true);
-                }
+            case R.id.menu_habit:
+                intent = new Intent(this, HabitActivity.class);
+                this.startActivity(intent);
                 return true;
-            case R.id.menu_blue:
-                if (item.isChecked()) {
-                    item.setChecked(false);
-                } else {
-                    item.setChecked(true);
-                }
+            case R.id.menu_timer:
+                intent = new Intent(this, TimerActivity.class);
+                this.startActivity(intent);
                 return true;
             default: return super.onOptionsItemSelected(item);
         }

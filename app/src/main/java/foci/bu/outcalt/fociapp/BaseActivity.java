@@ -1,5 +1,6 @@
 package foci.bu.outcalt.fociapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import foci.bu.outcalt.fociapp.habit.HabitActivity;
+import foci.bu.outcalt.fociapp.home.HomeActivity;
+import foci.bu.outcalt.fociapp.timer.TimerActivity;
+import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -32,40 +38,29 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
+        inflater.inflate(R.menu.foci_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
-            case R.id.menu_red:
-                if (item.isChecked()) {
-                    item.setChecked(false);
-                } else {
-                    item.setChecked(true);
-                }
+            case R.id.menu_home:
+                intent = new Intent(this, HomeActivity.class);
+                this.startActivity(intent);
                 return true;
-            case R.id.menu_green:
-                if (item.isChecked()) {
-                    item.setChecked(false);
-                } else {
-                    item.setChecked(true);
-                }
+            case R.id.menu_todo:
+                intent = new Intent(this, ToDoActivity.class);
+                this.startActivity(intent);
                 return true;
-            case R.id.menu_yellow:
-                if (item.isChecked()) {
-                    item.setChecked(false);
-                } else {
-                    item.setChecked(true);
-                }
+            case R.id.menu_habit:
+                intent = new Intent(this, HabitActivity.class);
+                this.startActivity(intent);
                 return true;
-            case R.id.menu_blue:
-                if (item.isChecked()) {
-                    item.setChecked(false);
-                } else {
-                    item.setChecked(true);
-                }
+            case R.id.menu_timer:
+                intent = new Intent(this, TimerActivity.class);
+                this.startActivity(intent);
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
