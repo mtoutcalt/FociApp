@@ -60,7 +60,6 @@ public class BreakChainActivity extends AppCompatActivity {
                         button1.setTextColor(Color.BLACK);
                     }
                 });
-                    // set the text to "text xx"
                     button.setText("DAY " + counter);
                     // add the TextView to the new TableRow
                     row1.addView(button);
