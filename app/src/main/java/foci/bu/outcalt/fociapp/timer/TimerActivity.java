@@ -1,8 +1,10 @@
 package foci.bu.outcalt.fociapp.timer;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +16,10 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import foci.bu.outcalt.fociapp.BaseActivity;
 import foci.bu.outcalt.fociapp.R;
@@ -33,10 +39,17 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
 
     private final long interval = 1 * 1000;
 
+    TranslateAnimation sailboatAnimation;
+    MediaPlayer mediaPlayer;
+    private boolean musicStarted = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timer);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.ambient);
+        mediaPlayer.setLooping(true);
 
         startButton = (Button) this.findViewById(R.id.startButton);
         startButton.setOnClickListener(this);
@@ -44,46 +57,78 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
 
         countDownTimer = new DefaultCountDownTimer(startTime, interval, text);
 
-        text.setText(text.getText() + String.valueOf(startTime / (1000)));
+        text.setText(""+String.format("%d min, %d sec",
+                TimeUnit.MILLISECONDS.toMinutes( startTime),
+                TimeUnit.MILLISECONDS.toSeconds(startTime) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(startTime))));
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
-        animateSailboat();
+        Button musicB = (Button) findViewById(R.id.musicB);
+        musicB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!musicStarted) {
+                    audioPlayer();
+                    musicStarted = true;
+                } else {
+                    stopMusic();
+                    musicStarted = false;
+                    try {
+                        mediaPlayer.prepare();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     private void animateSailboat() {
         final ImageView image =(ImageView) this.findViewById(R.id.sailboat);
 
-        final TranslateAnimation sailboatAnimation = new TranslateAnimation(0, 1200, 0, 0);
+        sailboatAnimation = new TranslateAnimation(0, 1200, 0, 0);
         sailboatAnimation.setDuration(6000);
         sailboatAnimation.setFillAfter(true);
         sailboatAnimation.setRepeatCount(3);
         sailboatAnimation.setRepeatMode(2);
 
-        Button button = (Button) this.findViewById(R.id.button4);
-        button.setOnClickListener(new View.OnClickListener() {
+        image.startAnimation(sailboatAnimation);
+    }
 
-            public void onClick(View v) {
-                image.startAnimation(sailboatAnimation);
-            }
-
-        });
+    private void stopAnimateSailboat() {
+        sailboatAnimation.cancel();
     }
 
     @Override
     public void onClick(View v) {
         if (!hasStarted) {
+            animateSailboat();
             countDownTimer.start();
             startButton.setText("PAUSE");
             hasStarted = true;
         } else {
+            stopAnimateSailboat();
             countDownTimer.cancel();
             startButton.setText("GO");
             hasStarted = false;
         }
+    }
+
+    public void audioPlayer() {
+        try {
+//            MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.ambient);
+            mediaPlayer.start();
+        } catch (Exception e) {
+            System.out.println("AHHHH5: " + e);
+        }
+    }
+
+    public void stopMusic() {
+        mediaPlayer.stop();
     }
 
     @Override

@@ -3,6 +3,8 @@ package foci.bu.outcalt.fociapp.timer;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 public class DefaultCountDownTimer extends CountDownTimer {
 
     TextView text;
@@ -19,6 +21,9 @@ public class DefaultCountDownTimer extends CountDownTimer {
 
     @Override
     public void onTick(long millisUntilFinished) {
-        text.setText("" + millisUntilFinished / 1000);
+        text.setText(""+String.format("%d min, %d sec",
+                TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
+                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
     }
 }
