@@ -30,12 +30,11 @@ import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
 public class TimerActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private CountDownTimer countDownTimer;
-    public static final String EXTRA_MESSAGE = "cs683.bu.outcalt.foci.MESSAGE";
+    private DefaultCountDownTimer countDownTimer;
     private Button startButton;
     public TextView text;
     private boolean hasStarted = false;
-    private final long startTime = 25 * 60 * 1000;
+    private long startTime = 25 * 60 * 1000;
 
     private final long interval = 1 * 1000;
 
@@ -54,8 +53,6 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         startButton = (Button) this.findViewById(R.id.startButton);
         startButton.setOnClickListener(this);
         text = (TextView) this.findViewById(R.id.timerText);
-
-        countDownTimer = new DefaultCountDownTimer(startTime, interval, text);
 
         text.setText(""+String.format("%d min, %d sec",
                 TimeUnit.MILLISECONDS.toMinutes( startTime),
@@ -106,6 +103,7 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (!hasStarted) {
+            countDownTimer = new DefaultCountDownTimer(startTime, interval, text);
             animateSailboat();
             countDownTimer.start();
             startButton.setText("PAUSE");
@@ -113,6 +111,7 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         } else {
             stopAnimateSailboat();
             countDownTimer.cancel();
+            startTime = countDownTimer.getTimeLeft();
             startButton.setText("GO");
             hasStarted = false;
         }

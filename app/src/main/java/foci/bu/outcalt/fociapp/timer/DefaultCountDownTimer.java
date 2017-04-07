@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class DefaultCountDownTimer extends CountDownTimer {
 
     TextView text;
+    long timeLeft;
 
     public DefaultCountDownTimer(long startTime, long interval, TextView text) {
         super(startTime, interval);
@@ -21,9 +22,14 @@ public class DefaultCountDownTimer extends CountDownTimer {
 
     @Override
     public void onTick(long millisUntilFinished) {
+        timeLeft = millisUntilFinished;
         text.setText(""+String.format("%d min, %d sec",
                 TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
                 TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+    }
+
+    public Long getTimeLeft() {
+        return timeLeft;
     }
 }
