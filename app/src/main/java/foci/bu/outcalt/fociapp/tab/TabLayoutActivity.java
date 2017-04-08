@@ -1,6 +1,7 @@
 package foci.bu.outcalt.fociapp.tab;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
+
+import java.net.URL;
 
 import foci.bu.outcalt.fociapp.R;
 import foci.bu.outcalt.fociapp.calm.BreatheActivity;
@@ -58,8 +62,18 @@ public class TabLayoutActivity extends AppCompatActivity {
                                                public void onTabReselected(TabLayout.Tab tab) {
                                                }
                                            });
-
     }
+
+    public void showWebPage(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.giantbomb.com"));
+        startActivity(intent);
+    }
+
+    public void showWebPage2(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
