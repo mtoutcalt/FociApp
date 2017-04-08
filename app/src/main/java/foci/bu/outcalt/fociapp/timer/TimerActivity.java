@@ -41,6 +41,7 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
     TranslateAnimation sailboatAnimation;
     MediaPlayer mediaPlayer;
     private boolean musicStarted = false;
+    private CountDownTimer myTimer;
     long timeLeft;
 
     @Override
@@ -85,20 +86,6 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    private CountDownTimer myTimer = new CountDownTimer(startTime, interval) {
-        public void onTick(long millisUntilFinished) {
-            timeLeft = millisUntilFinished;
-            text.setText(""+String.format("%d min, %d sec",
-                    TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
-                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
-                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
-        }
-        public void onFinish() {
-            text.setText("Time's up!");
-            broadcastIntent();
-        }
-    };
-
     public void broadcastIntent() {
         Intent intent = new Intent();
         //broadcast receiver intent filter must use this action string
@@ -136,8 +123,11 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
                                     TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
                 }
                 public void onFinish() {
-                    text.setText("Time's up!");
+                    text.setText("Time's up 2!");
                     broadcastIntent();
+                    hasStarted = false;
+                    startTime = 25 * 60 * 1000;
+                    startButton.setText("START AGAIN");
                 }
             };
             animateSailboat();

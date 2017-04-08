@@ -10,14 +10,15 @@ import android.view.ViewGroup;
 import foci.bu.outcalt.fociapp.R;
 
 
-public class Tab2 extends Fragment {
+public class InfoTab4 extends Fragment {
 
-    public Tab2() {
+    public InfoTab4() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.tab_layout_fragment2, container, false);
+        return inflater.inflate(R.layout.tab_layout_fragment4, container, false);
     }
+
 }

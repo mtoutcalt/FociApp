@@ -6,18 +6,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import foci.bu.outcalt.fociapp.R;
 
 
-public class Tab3 extends Fragment {
+public class InfoTab1 extends Fragment {
 
-    public Tab3() {
+    public InfoTab1() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.tab_layout_fragment3, container, false);
+
+        return inflater.inflate(R.layout.tab_layout_fragment1, container, false);
     }
+
 }
