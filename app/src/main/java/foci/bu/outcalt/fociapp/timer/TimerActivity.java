@@ -32,17 +32,16 @@ import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
 public class TimerActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DefaultCountDownTimer countDownTimer;
     private Button startButton;
     public TextView text;
     private boolean hasStarted = false;
     private long startTime = 25 * 60 * 1000;
-
     private final long interval = 1 * 1000;
 
     TranslateAnimation sailboatAnimation;
     MediaPlayer mediaPlayer;
     private boolean musicStarted = false;
+    long timeLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +85,28 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
+    private CountDownTimer myTimer = new CountDownTimer(startTime, interval) {
+        public void onTick(long millisUntilFinished) {
+            timeLeft = millisUntilFinished;
+            text.setText(""+String.format("%d min, %d sec",
+                    TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
+                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+        }
+        public void onFinish() {
+            text.setText("Time's up!");
+            broadcastIntent();
+        }
+    };
+
+    public void broadcastIntent() {
+        Intent intent = new Intent();
+        //broadcast receiver intent filter must use this action string
+        intent.setAction("com.outcalt.sendbroadcast.vibrate");
+        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        this.sendBroadcast(intent);
+    }
+
     private void animateSailboat() {
         final ImageView image =(ImageView) this.findViewById(R.id.sailboat);
 
@@ -105,15 +126,29 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (!hasStarted) {
-            countDownTimer = new DefaultCountDownTimer(startTime, interval, text);
+            //creating new timer with new startTime so timeleft is persisted
+            myTimer = new CountDownTimer(startTime, interval) {
+                public void onTick(long millisUntilFinished) {
+                    timeLeft = millisUntilFinished;
+                    text.setText(""+String.format("%d min, %d sec",
+                            TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
+                            TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                }
+                public void onFinish() {
+                    text.setText("Time's up!");
+                    broadcastIntent();
+                }
+            };
             animateSailboat();
-            countDownTimer.start();
+            myTimer.start();
             startButton.setText("PAUSE");
             hasStarted = true;
         } else {
             stopAnimateSailboat();
-            countDownTimer.cancel();
-            startTime = countDownTimer.getTimeLeft();
+            myTimer.cancel();
+            System.out.println("SAVED: " + timeLeft);
+            startTime = timeLeft;
             startButton.setText("GO");
             hasStarted = false;
         }
