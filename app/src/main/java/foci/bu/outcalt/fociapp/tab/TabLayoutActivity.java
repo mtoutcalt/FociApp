@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import foci.bu.outcalt.fociapp.R;
+import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
@@ -58,15 +59,8 @@ public class TabLayoutActivity extends AppCompatActivity {
                                                }
                                            });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -92,6 +86,14 @@ public class TabLayoutActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_timer:
                 intent = new Intent(this, TimerActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_breathe:
+                intent = new Intent(this, BreatheActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_info:
+                intent = new Intent(this, TabLayoutActivity.class);
                 this.startActivity(intent);
                 return true;
             default: return super.onOptionsItemSelected(item);

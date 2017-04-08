@@ -17,13 +17,13 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0: Tab1Fragment tab1 = new Tab1Fragment();
+            case 0: Tab1 tab1 = new Tab1();
                 return tab1;
-            case 1: Tab2Fragment tab2 = new Tab2Fragment();
+            case 1: Tab2 tab2 = new Tab2();
                 return tab2;
-            case 2: Tab3Fragment tab3 = new Tab3Fragment();
+            case 2: Tab3 tab3 = new Tab3();
                 return tab3;
-            case 3: Tab4Fragment tab4 = new Tab4Fragment();
+            case 3: Tab4 tab4 = new Tab4();
                 return tab4;
             default: return null;
         }

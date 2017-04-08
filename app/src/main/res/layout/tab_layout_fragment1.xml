@@ -3,29 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="foci.bu.outcalt.fociapp.tab.Tab1Fragment">
+    tools:context="foci.bu.outcalt.fociapp.tab.Tab1">
 
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
         android:id="@+id/image1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/chart" />
+        android:layout_width="0dp"
+        android:layout_height="169dp"
+        android:src="@drawable/chart"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tab1TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="text text text"
+        android:text="@string/tab1string"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.586"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 
 </android.support.constraint.ConstraintLayout>

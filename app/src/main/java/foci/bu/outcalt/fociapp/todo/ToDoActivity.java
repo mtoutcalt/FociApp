@@ -31,8 +31,10 @@ import java.util.Date;
 
 import foci.bu.outcalt.fociapp.BaseActivity;
 import foci.bu.outcalt.fociapp.R;
+import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
+import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
 import foci.bu.outcalt.fociapp.todo.db.TaskContract;
 import foci.bu.outcalt.fociapp.todo.db.TaskDbHelper;
@@ -214,6 +216,14 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
                 return true;
             case R.id.menu_timer:
                 intent = new Intent(this, TimerActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_breathe:
+                intent = new Intent(this, BreatheActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_info:
+                intent = new Intent(this, TabLayoutActivity.class);
                 this.startActivity(intent);
                 return true;
             default: return super.onOptionsItemSelected(item);

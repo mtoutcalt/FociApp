@@ -6,22 +6,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import foci.bu.outcalt.fociapp.R;
 
 
-public class Tab1Fragment extends Fragment {
+public class Tab1 extends Fragment {
 
-
-    public Tab1Fragment() {
-        // Required empty public constructor
+    public Tab1() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.tab_layout_fragment1, container, false);
     }
 

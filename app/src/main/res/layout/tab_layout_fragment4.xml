@@ -3,19 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="foci.bu.outcalt.fociapp.tab.Tab4Fragment">
+    tools:context="foci.bu.outcalt.fociapp.tab.Tab4">
 
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tab4TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="44444444"
+        android:text="@string/tab4string"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

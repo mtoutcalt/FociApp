@@ -10,19 +10,14 @@ import android.view.ViewGroup;
 import foci.bu.outcalt.fociapp.R;
 
 
-public class Tab2Fragment extends Fragment {
+public class Tab3 extends Fragment {
 
-
-    public Tab2Fragment() {
-        // Required empty public constructor
+    public Tab3() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.tab_layout_fragment2, container, false);
+        return inflater.inflate(R.layout.tab_layout_fragment3, container, false);
     }
-
 }

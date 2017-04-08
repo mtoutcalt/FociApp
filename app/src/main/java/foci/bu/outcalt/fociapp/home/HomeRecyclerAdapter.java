@@ -2,7 +2,6 @@ package foci.bu.outcalt.fociapp.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import foci.bu.outcalt.fociapp.R;
+import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
+import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
@@ -52,6 +51,14 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                             intent = new Intent(context, HabitActivity.class);
                             context.startActivity(intent);
                             break;
+                        case 3:
+                            intent = new Intent(context, BreatheActivity.class);
+                            context.startActivity(intent);
+                            break;
+                        case 4:
+                            intent = new Intent(context, TabLayoutActivity.class);
+                            context.startActivity(intent);
+                            break;
                         default: break;
                     }
                 }
@@ -59,14 +66,26 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         }
     }
 
-    private String[] titles = {"Timer",
-            "TODO", "Habit"};
+    private String[] titles = {
+            "Timer",
+            "TODO",
+            "Habit",
+            "Breathe",
+            "Info"};
 
-    private String[] details = {"Pomodoro Timer", "Todo List",
-            "Don't Break the Chain"};
+    private String[] details = {"" +
+            "Pomodoro Timer",
+            "Todo List",
+            "Don't Break the Chain",
+            "Follow your breathe to relax",
+            "Information about the app"};
+
     private int[] images = {
-            R.drawable.pomodoro, R.drawable.ic_done_all_black_24dp,
-            R.drawable.ic_event_black_24dp
+            R.drawable.pomodoro,
+            R.drawable.ic_done_all_black_24dp,
+            R.drawable.ic_event_black_24dp,
+            R.drawable.ic_menu_gallery,
+            android.R.drawable.ic_dialog_info
     };
 
     @Override

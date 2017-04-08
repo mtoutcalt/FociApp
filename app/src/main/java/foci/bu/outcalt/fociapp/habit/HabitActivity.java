@@ -27,7 +27,9 @@ import java.util.List;
 
 import foci.bu.outcalt.fociapp.BaseActivity;
 import foci.bu.outcalt.fociapp.R;
+import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
+import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
@@ -203,6 +205,14 @@ public class HabitActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_timer:
                 intent = new Intent(this, TimerActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_breathe:
+                intent = new Intent(this, BreatheActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_info:
+                intent = new Intent(this, TabLayoutActivity.class);
                 this.startActivity(intent);
                 return true;
             default: return super.onOptionsItemSelected(item);

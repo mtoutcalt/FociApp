@@ -1,44 +1,35 @@
 package foci.bu.outcalt.fociapp.calm;
 
-
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
-
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RunnableFuture;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import foci.bu.outcalt.fociapp.R;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
+import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
-public class BreathActivity extends AppCompatActivity {
+public class BreatheActivity extends AppCompatActivity {
 
     int counter = 1;
     TextView textView;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.breathe_animate);
+        setContentView(R.layout.breathe_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         textView = (TextView) findViewById(R.id.breathText);
 
         ImageView mImageViewFilling = (ImageView) findViewById(R.id.animate_breathe);
@@ -57,20 +48,21 @@ public class BreathActivity extends AppCompatActivity {
     private void determineTextChange() {
         switch (counter) {
             case 1: textView.setText("Hold");
-                    counter++;
-                    break;
+                counter++;
+                break;
             case 2: textView.setText("BREATHE OUT");
-                    counter++;
-                    break;
+                counter++;
+                break;
             case 3: textView.setText("HOLD");
-                     counter++;
-                    break;
+                counter++;
+                break;
             case 4: textView.setText("BREATHE");
                 counter = 1;
                 break;
             default: textView.setText("ERROR");
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,11 +91,16 @@ public class BreathActivity extends AppCompatActivity {
                 intent = new Intent(this, TimerActivity.class);
                 this.startActivity(intent);
                 return true;
+            case R.id.menu_breathe:
+                intent = new Intent(this, BreatheActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_info:
+                intent = new Intent(this, TabLayoutActivity.class);
+                this.startActivity(intent);
+                return true;
             default: return super.onOptionsItemSelected(item);
         }
     }
-
-
-
 
 }
