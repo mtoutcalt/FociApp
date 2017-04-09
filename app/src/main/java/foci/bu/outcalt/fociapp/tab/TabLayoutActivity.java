@@ -36,10 +36,10 @@ public class TabLayoutActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         //add the tabs to layout
-        tabLayout.addTab(tabLayout.newTab().setIcon(android.R.drawable.ic_dialog_info));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2 Item"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3 Item"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 4 Item"));
+        tabLayout.addTab(tabLayout.newTab().setText("Pomodoro"));
+        tabLayout.addTab(tabLayout.newTab().setText("Break the Chain"));
+        tabLayout.addTab(tabLayout.newTab().setText("Risk-Averse Motivation"));
+        tabLayout.addTab(tabLayout.newTab().setText("About"));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         //send layout to tab adapter
@@ -64,13 +64,27 @@ public class TabLayoutActivity extends AppCompatActivity {
                                            });
     }
 
-    public void showWebPage(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.giantbomb.com"));
+    public void showWebPageTab1(View view) {
+        //Pomodoro
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://cirillocompany.de/pages/pomodoro-technique"));
         startActivity(intent);
     }
 
-    public void showWebPage2(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+    public void showWebPageTab2(View view) {
+        //Don't Break the Chain
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://lifehacker.com/5886128/how-seinfelds-productivity-secret-fixed-my-procrastination-problem"));
+        startActivity(intent);
+    }
+
+    public void showWebPageTab3(View view) {
+        // risk-averse motivation
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://nonprofitquarterly.org/2013/02/01/the-anti-charity-system-first-choose-a-cause-you-despise/"));
+        startActivity(intent);
+    }
+
+    public void showWebPageTab4(View view) {
+        //about me
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/mtoutcalt/FociApp"));
         startActivity(intent);
     }
 

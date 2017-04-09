@@ -90,6 +90,7 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = new Intent();
         //broadcast receiver intent filter must use this action string
         intent.setAction("com.outcalt.sendbroadcast.vibrate");
+        //include intent filters of stopped applications too in the list of potential targets to resolve against
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
         this.sendBroadcast(intent);
     }

@@ -7,16 +7,16 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_home">HomeActivity</string>
 
-    <string name="tab1string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    <string name="tab1string">"Pomodoro means 'tomato' in Italian and gets it name from a tomato-shaped cooking timer that could be set to 25 minutes.  The Pomodoro technique is about committing to a set time, typically 25 minutes, and focusing on a single task.  To create self-awareness, every time you are interrupted either by yourself or by something external you document it and review it to decrease your interruptions.  Take breaks in-between session.  By committing to a 25 minute period of focused time you can achieve a lot."
     </string>
 
-    <string name="tab2string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    <string name="tab2string">"The Don't Break The Chain technique is used to help doing a habit each day and staying accountable.  The idea is to find something you want to do everyday, say exercise, and to commit to just exercising everday for any amount of time - even if it's only for a couple minutes.  Each day you do the habit you can cross out that day.  The goal is not to break the chain of successful days.  By committing to just doing the habit each day you will find that even when you commit to 5 minutes often once you start you will keep going."
     </string>
 
-    <string name="tab3string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    <string name="tab3string">"Research has show that people are often more motivated by avoiding a risk rather than achieving a reward.  There's a technique called anti-charity where people promise to achieve a goal and if they don't they have to pay money to an organization that they despise.  The thought of paying will motivate since people want to avoid a risk.  This idea was used to make a social promise to somebody in your contact list and you will be motivated to meet your goal in order to avoid an embarrassing text being sent to a Contact of your choice."
     </string>
 
-    <string name="tab4string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    <string name="tab4string">"This application was created by Mark Outcalt as part of a project for the Boston University Master's in Computer Information Systems program."
     </string>
     <string name="title_activity_main">MainActivity</string>
 
