@@ -124,7 +124,7 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
                                     TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
                 }
                 public void onFinish() {
-                    text.setText("Time's up 2!");
+                    text.setText("Time's up!");
                     broadcastIntent();
                     hasStarted = false;
                     startTime = 25 * 60 * 1000;

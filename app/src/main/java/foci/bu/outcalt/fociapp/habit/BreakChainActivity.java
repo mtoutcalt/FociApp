@@ -14,7 +14,6 @@ import foci.bu.outcalt.fociapp.R;
 public class BreakChainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "foci.bu.outcalt.fociapp.MESSAGE";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -46,7 +46,6 @@ public class WebViewActivity extends AppCompatActivity {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.loadUrl(url.toString());
-
     }
 
     @Override
