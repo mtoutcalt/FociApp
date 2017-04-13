@@ -9,25 +9,25 @@
     tools:showIn="@layout/breathe_layout">
 
     <TextView
-    android:id="@+id/breathText"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:text="BREATH"
-    android:textSize="30sp"
-    tools:layout_constraintRight_creator="1"
-    tools:layout_constraintBottom_creator="1"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    android:layout_marginBottom="94dp"
-    android:layout_marginRight="122dp"
-    android:layout_marginEnd="63dp"
+        android:id="@+id/breathText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="94dp"
+        android:layout_marginEnd="63dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.661"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="122dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_weight="1"
+        android:text="BREATHE IN"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
     <ImageView
     android:id="@+id/animate_breathe"
