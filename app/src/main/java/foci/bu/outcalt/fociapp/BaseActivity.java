@@ -11,8 +11,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
+import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
+import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
@@ -60,6 +63,18 @@ public class BaseActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_timer:
                 intent = new Intent(this, TimerActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_breathe:
+                intent = new Intent(this, BreatheActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_info:
+                intent = new Intent(this, TabLayoutActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_quote:
+                intent = new Intent(this, QuoteActivity.class);
                 this.startActivity(intent);
                 return true;
             default: return super.onOptionsItemSelected(item);

@@ -22,5 +22,8 @@
         <item
             android:id="@+id/menu_info"
             android:title="Info" />
+        <item
+            android:id="@+id/menu_quote"
+            android:title="Quote" />
     </group>
 </menu>

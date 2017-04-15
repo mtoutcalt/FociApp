@@ -12,6 +12,7 @@ import android.widget.TextView;
 import foci.bu.outcalt.fociapp.R;
 import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
+import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
 import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
@@ -59,6 +60,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                             intent = new Intent(context, TabLayoutActivity.class);
                             context.startActivity(intent);
                             break;
+                        case 5:
+                            intent = new Intent(context, QuoteActivity.class);
+                            context.startActivity(intent);
+                            break;
                         default: break;
                     }
                 }
@@ -71,21 +76,24 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             "TODO",
             "Habit",
             "Breathe",
-            "Info"};
+            "Info",
+            "Quotes"};
 
     private String[] details = {"" +
             "Pomodoro Timer",
             "Todo List",
             "Don't Break the Chain",
             "Follow your breathe to relax",
-            "Information about the app"};
+            "Information about the app",
+            "Get quotes of the day to get you inspired"};
 
     private int[] images = {
             R.drawable.pomodoro,
             R.drawable.ic_done_all_black_24dp,
             R.drawable.ic_event_black_24dp,
             R.drawable.ic_menu_gallery,
-            android.R.drawable.ic_dialog_info
+            android.R.drawable.ic_dialog_info,
+            R.drawable.ic_menu_manage
     };
 
     @Override

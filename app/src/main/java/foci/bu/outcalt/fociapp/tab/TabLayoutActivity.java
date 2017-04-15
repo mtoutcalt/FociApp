@@ -22,6 +22,7 @@ import foci.bu.outcalt.fociapp.R;
 import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
+import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
@@ -122,6 +123,10 @@ public class TabLayoutActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_info:
                 intent = new Intent(this, TabLayoutActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_quote:
+                intent = new Intent(this, QuoteActivity.class);
                 this.startActivity(intent);
                 return true;
             default: return super.onOptionsItemSelected(item);
