@@ -58,8 +58,6 @@ public class QuoteActivity extends AppCompatActivity {
             nameText.setText("\"" + quoteParent.getContents().getQuotes()[0].getQuote() + "\"");
             quoteText.setText(quoteParent.getContents().getQuotes()[0].getAuthor());
         }
-
-
     }
 
     @Override

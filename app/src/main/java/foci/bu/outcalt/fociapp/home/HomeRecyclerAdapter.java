@@ -2,6 +2,7 @@ package foci.bu.outcalt.fociapp.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,11 +58,11 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                             context.startActivity(intent);
                             break;
                         case 4:
-                            intent = new Intent(context, TabLayoutActivity.class);
+                            intent = new Intent(context, QuoteActivity.class);
                             context.startActivity(intent);
                             break;
                         case 5:
-                            intent = new Intent(context, QuoteActivity.class);
+                            intent = new Intent(context, TabLayoutActivity.class);
                             context.startActivity(intent);
                             break;
                         default: break;
@@ -76,24 +77,25 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             "TODO",
             "Habit",
             "Breathe",
-            "Info",
-            "Quotes"};
+            "Quotes",
+            "Info"};
 
     private String[] details = {"" +
             "Pomodoro Timer",
             "Todo List",
             "Don't Break the Chain",
             "Follow your breathe to relax",
-            "Information about the app",
-            "Get quotes of the day to get you inspired"};
+            "Get quotes of the day to get you inspired",
+            "Information about the app"
+            };
 
     private int[] images = {
             R.drawable.pomodoro,
             R.drawable.ic_done_all_black_24dp,
             R.drawable.ic_event_black_24dp,
             R.drawable.ic_menu_gallery,
+            R.drawable.ic_face_black_24dp,
             android.R.drawable.ic_dialog_info,
-            R.drawable.ic_menu_manage
     };
 
     @Override

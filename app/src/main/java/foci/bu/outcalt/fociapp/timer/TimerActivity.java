@@ -148,10 +148,9 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
 
     public void audioPlayer() {
         try {
-//            MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.ambient);
             mediaPlayer.start();
         } catch (Exception e) {
-            System.out.println("AHHHH5: " + e);
+            System.out.println("Something bad happened: " + e);
         }
     }
 

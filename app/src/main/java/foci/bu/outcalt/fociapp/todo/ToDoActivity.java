@@ -69,10 +69,10 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //gesture
-        gestureText = (TextView) findViewById(R.id.gestureStatusText2);
-        this.gDetector = new GestureDetectorCompat(this, this);
-        gDetector.setOnDoubleTapListener(this);
+//        //gesture
+//        gestureText = (TextView) findViewById(R.id.gestureStatusText2);
+//        this.gDetector = new GestureDetectorCompat(this, this);
+//        gDetector.setOnDoubleTapListener(this);
 
         //intialize the dbHelper
         taskDbHelper = new TaskDbHelper(this);

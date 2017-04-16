@@ -36,15 +36,15 @@
     <include layout="@layout/todo"
         android:id="@+id/include" />
 
-    <TextView
-        android:id="@+id/gestureStatusText2"
-        android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:layout_gravity="bottom|right"
-        android:text="TextView"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="top|left"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-1dp" />
+    <!--<TextView-->
+        <!--android:id="@+id/gestureStatusText2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="33dp"-->
+        <!--android:layout_gravity="bottom|right"-->
+        <!--android:text="TextView"-->
+        <!--app:layout_anchor="@+id/include"-->
+        <!--app:layout_anchorGravity="top|left"-->
+        <!--tools:layout_editor_absoluteX="0dp"-->
+        <!--tools:layout_editor_absoluteY="-1dp" />-->
 
 </android.support.design.widget.CoordinatorLayout>

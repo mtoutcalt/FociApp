@@ -128,18 +128,7 @@ public class HabitActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String smsText = String.valueOf(smsEditText.getText());
-//                        SQLiteDatabase db = taskDbHelper.getWritableDatabase();
-//                        ContentValues values = new ContentValues();
-//                        values.put(TaskContract.TaskEntry.COL_TASK_TITLE, task);
-//                        values.put(TaskContract.TaskEntry.COL_TASK_DATE_CREATED, createCurrentTime());
-//                        db.insertWithOnConflict(TaskContract.TaskEntry.TABLE,
-//                                null,
-//                                values,
-//                                SQLiteDatabase.CONFLICT_REPLACE);
-//                        updateUI();
-//                        db.close();
                         Log.i(TAG, "SMS TO SEND: " + smsText);
-//                        callSnackBar();
                         sendSMS(smsText);
                     }
                 })
