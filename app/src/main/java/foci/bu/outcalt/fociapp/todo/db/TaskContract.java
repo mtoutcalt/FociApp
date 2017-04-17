@@ -10,7 +10,7 @@ public final class TaskContract {
 
     // If you change the database schema, you must increment the database version.
     //adding a new field so incrementing to version 2
-    public static final int DB_VERSION = 5;
+    public static final int DB_VERSION = 6;
 
 
     public class TaskEntry implements BaseColumns {

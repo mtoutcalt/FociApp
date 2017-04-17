@@ -1,10 +1,14 @@
 package foci.bu.outcalt.fociapp.timer;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,12 +17,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import foci.bu.outcalt.fociapp.BaseActivity;
@@ -28,7 +39,11 @@ import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
 import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
 import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
+import foci.bu.outcalt.fociapp.timer.db.SessionContract;
+import foci.bu.outcalt.fociapp.timer.db.SessionDbHelper;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
+import foci.bu.outcalt.fociapp.todo.db.TaskContract;
+import foci.bu.outcalt.fociapp.todo.db.TaskDbHelper;
 
 
 public class TimerActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,14 +51,20 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
     private Button startButton;
     public TextView text;
     private boolean hasStarted = false;
-    private long startTime = 25 * 60 * 1000;
+    private long startTime = 5*1000; //25 * 60 * 1000
     private final long interval = 1 * 1000;
+    private int interruptCounter = 0;
 
     TranslateAnimation sailboatAnimation;
     MediaPlayer mediaPlayer;
     private boolean musicStarted = false;
     private CountDownTimer myTimer;
     long timeLeft;
+    //sessions
+    private SessionDbHelper sessionDbHelper;
+    private ArrayAdapter<String> sessionViewAdapter;
+    private ListView sessionListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +77,10 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         startButton = (Button) this.findViewById(R.id.startButton);
         startButton.setOnClickListener(this);
         text = (TextView) this.findViewById(R.id.timerText);
+
+        sessionDbHelper = new SessionDbHelper(this);
+        sessionListView = (ListView) findViewById(R.id.niceList);
+
 
         text.setText(""+String.format("%d min, %d sec",
                 TimeUnit.MILLISECONDS.toMinutes( startTime),
@@ -85,6 +110,25 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
+    }
+
+    public void addSessionToDB(int interruptNum) {
+        Format formatter = new SimpleDateFormat("MM-dd");
+        String todaysDate = formatter.format(new Date());
+
+        SQLiteDatabase db = sessionDbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(SessionContract.SessionEntry.COL_SESSION_TITLE, Integer.toString(interruptNum));
+        values.put(SessionContract.SessionEntry.COL_SESSION_DATE_CREATED, todaysDate);
+        db.insertWithOnConflict(SessionContract.SessionEntry.TABLE,
+                null,
+                values,
+                SQLiteDatabase.CONFLICT_REPLACE);
+        db.close();
+        Toast.makeText(this, "You had " + interruptCounter + " interrupts", Toast.LENGTH_LONG).show();
+        interruptCounter = 0;
+        TextView counter = (TextView) findViewById(R.id.interCount);
+        counter.setText("0");
     }
 
     public void broadcastIntent() {
@@ -128,8 +172,9 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
                     text.setText("Time's up!");
                     broadcastIntent();
                     hasStarted = false;
-                    startTime = 25 * 60 * 1000;
+                    startTime = 5 * 1000; //TODO 25 * 60 * 1000
                     startButton.setText("START AGAIN");
+                    addSessionToDB(interruptCounter);
                 }
             };
             animateSailboat();
@@ -156,6 +201,12 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
 
     public void stopMusic() {
         mediaPlayer.stop();
+    }
+
+    public void addInterrupt(View view) {
+        TextView counter = (TextView) findViewById(R.id.interCount);
+        ++interruptCounter;
+        counter.setText(Integer.toString(interruptCounter));
     }
 
     @Override
