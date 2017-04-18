@@ -17,6 +17,7 @@ import foci.bu.outcalt.fociapp.home.HomeActivity;
 import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
 import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
+import foci.bu.outcalt.fociapp.timer.TimerSessionActivity;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
 public class BaseActivity extends AppCompatActivity {
@@ -75,6 +76,10 @@ public class BaseActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_quote:
                 intent = new Intent(this, QuoteActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_session_history:
+                intent = new Intent(this, TimerSessionActivity.class);
                 this.startActivity(intent);
                 return true;
             default: return super.onOptionsItemSelected(item);

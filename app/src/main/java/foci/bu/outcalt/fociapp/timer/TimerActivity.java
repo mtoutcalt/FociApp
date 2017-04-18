@@ -87,7 +87,7 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
                 TimeUnit.MILLISECONDS.toSeconds(startTime) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(startTime))));
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
@@ -246,6 +246,10 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
                 return true;
             case R.id.menu_quote:
                 intent = new Intent(this, QuoteActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_session_history:
+                intent = new Intent(this, TimerSessionActivity.class);
                 this.startActivity(intent);
                 return true;
             default: return super.onOptionsItemSelected(item);

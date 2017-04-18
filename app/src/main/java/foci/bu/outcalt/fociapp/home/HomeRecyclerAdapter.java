@@ -16,6 +16,7 @@ import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
 import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
 import foci.bu.outcalt.fociapp.timer.TimerActivity;
+import foci.bu.outcalt.fociapp.timer.TimerSessionActivity;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
 
@@ -46,22 +47,26 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                             context.startActivity(intent);
                             break;
                         case 1:
-                            intent = new Intent(context, ToDoActivity.class);
+                            intent = new Intent(context, TimerSessionActivity.class);
                             context.startActivity(intent);
                             break;
                         case 2:
-                            intent = new Intent(context, HabitActivity.class);
+                            intent = new Intent(context, ToDoActivity.class);
                             context.startActivity(intent);
                             break;
                         case 3:
-                            intent = new Intent(context, BreatheActivity.class);
+                            intent = new Intent(context, HabitActivity.class);
                             context.startActivity(intent);
                             break;
                         case 4:
-                            intent = new Intent(context, QuoteActivity.class);
+                            intent = new Intent(context, BreatheActivity.class);
                             context.startActivity(intent);
                             break;
                         case 5:
+                            intent = new Intent(context, QuoteActivity.class);
+                            context.startActivity(intent);
+                            break;
+                        case 6:
                             intent = new Intent(context, TabLayoutActivity.class);
                             context.startActivity(intent);
                             break;
@@ -74,6 +79,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
     private String[] titles = {
             "Timer",
+            "Timer Session History",
             "TODO",
             "Habit",
             "Breathe",
@@ -82,6 +88,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
     private String[] details = {"" +
             "Pomodoro Timer",
+            "History of Pomodoro Sessions with the number of interruptions",
             "Todo List",
             "Don't Break the Chain",
             "Follow your breathe to relax",
@@ -91,6 +98,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
     private int[] images = {
             R.drawable.pomodoro,
+            R.drawable.ic_assignment_black_24dp,
             R.drawable.ic_done_all_black_24dp,
             R.drawable.ic_event_black_24dp,
             R.drawable.ic_menu_gallery,
