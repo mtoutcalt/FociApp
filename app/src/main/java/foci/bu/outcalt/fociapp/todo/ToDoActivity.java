@@ -1,10 +1,13 @@
 package foci.bu.outcalt.fociapp.todo;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -29,7 +32,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import foci.bu.outcalt.fociapp.BaseActivity;
 import foci.bu.outcalt.fociapp.R;
 import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
@@ -47,6 +49,7 @@ import foci.bu.outcalt.fociapp.todo.db.TaskDbHelper;
  */
 public class ToDoActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 
+    private static final int REQUEST_CODE = 101;
     private static final String TAG = "StateChange";
     private TaskDbHelper taskDbHelper;
     private ListView taskListView;
@@ -69,6 +72,7 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
         setContentView(R.layout.todo_task);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setAlarm();
 
 //        //gesture
 //        gestureText = (TextView) findViewById(R.id.gestureStatusText2);
@@ -88,6 +92,18 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
                 snackView = view;
             }
         });
+    }
+
+    private void setAlarm(){
+        Intent intent = new Intent(this, TodoAlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, REQUEST_CODE, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 45);
+        calendar.set(Calendar.SECOND, 00);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, AlarmManager.INTERVAL_FIFTEEN_MINUTES , pendingIntent);  //set repeating every 24 hours
     }
 
     private void addListItem() {

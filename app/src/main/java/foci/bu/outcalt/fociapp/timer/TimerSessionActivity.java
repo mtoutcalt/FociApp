@@ -52,7 +52,6 @@ public class TimerSessionActivity extends AppCompatActivity {
 
     public void showSessions() {
         ArrayList<String> sessionList = new ArrayList<>();
-        ArrayList<String> createdList = new ArrayList<>();
         SQLiteDatabase db = sessionDbHelper.getReadableDatabase();
         String[] projection = {SessionContract.SessionEntry._ID, SessionContract.SessionEntry.COL_SESSION_TITLE, TaskContract.TaskEntry.COL_TASK_DATE_CREATED};
 
@@ -65,11 +64,8 @@ public class TimerSessionActivity extends AppCompatActivity {
             int idx = cursor.getColumnIndex(SessionContract.SessionEntry.COL_SESSION_TITLE);
             int blah = cursor.getColumnIndex(SessionContract.SessionEntry.COL_SESSION_DATE_CREATED);
             sessionList.add("Interrupts: " + cursor.getString(idx) + "       Date: " + cursor.getString(blah));
-//            createdList.add(cursor.getString(blah));
         }
 
-        System.out.println("SESSIONS: " + sessionList.size());
-        //TODO FIX THIS
         if (sessionViewAdapter == null) {
             sessionViewAdapter = new ArrayAdapter<>(this,
                     R.layout.timer_session_task,  //view to use for tasks
