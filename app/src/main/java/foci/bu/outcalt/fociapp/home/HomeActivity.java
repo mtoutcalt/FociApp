@@ -33,7 +33,6 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new HomeRecyclerAdapter();
         recyclerView.setAdapter(adapter);
-
     }
 
 }

@@ -23,7 +23,6 @@ import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder> {
 
-
     class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView itemImage;
         public TextView itemTitle;

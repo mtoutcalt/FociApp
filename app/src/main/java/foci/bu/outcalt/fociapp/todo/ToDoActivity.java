@@ -104,7 +104,7 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
         calendar.set(Calendar.HOUR_OF_DAY, 23);
         calendar.set(Calendar.MINUTE, 45);
         calendar.set(Calendar.SECOND, 00);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, AlarmManager.INTERVAL_FIFTEEN_MINUTES , pendingIntent);  //set repeating every 24 hours
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, AlarmManager.INTERVAL_DAY , pendingIntent);  //set repeating every 24 hours
     }
 
     private void addListItem() {
@@ -142,20 +142,20 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     private void callSnackBar() {
-        Snackbar.make(snackView, "Item added to list", Snackbar.LENGTH_LONG)
-                .setAction("Undo", undoOnClickListener).show();
+        Snackbar.make(snackView, "Item added to list", Snackbar.LENGTH_LONG).show();
+//                .setAction("Undo", undoOnClickListener).show();
     }
 
-    View.OnClickListener undoOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-//            listItems.remove(listItems.size()-1);
-//            adapter.notifyDataSetChanged();
-            View deleteView = findViewById(R.id.task_title);
-            deleteTask(deleteView);
-            Snackbar.make(view, "Item removed", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-        }
-    };
+//    View.OnClickListener undoOnClickListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+////            listItems.remove(listItems.size()-1);
+////            adapter.notifyDataSetChanged();
+//            View deleteView = findViewById(R.id.task_title);
+//            deleteTask(deleteView);
+//            Snackbar.make(view, "Item removed", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+//        }
+//    };
 
     private void updateUI() {
         ArrayList<String> taskList = new ArrayList<>();

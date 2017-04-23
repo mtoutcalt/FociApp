@@ -1,6 +1,5 @@
 package foci.bu.outcalt.fociapp.creative;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +27,6 @@ import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 /**
  * Created by mark on 4/23/2017.
  */
-
 public class BrainstormTopicActivity extends AppCompatActivity {
     List<String> topics;
 

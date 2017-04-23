@@ -13,98 +13,84 @@ import android.view.View;
 /**
  * Created by mark on 4/22/2017.
  */
-
 public class BrainstormCanvas extends View {
 
-    public int width;
-    public int height;
-    private Bitmap mBitmap;
-    private Canvas mCanvas;
-    private Path mPath;
+    private Path path;
     Context context;
-    private Paint mPaint;
-    private float mX, mY;
-    private static final float TOLERANCE = 5;
+    private Paint paint;
+    private float xPos, yPos;
+    private static final float PAINT_SCREEN_BOUNDARY = 5;
 
     public BrainstormCanvas(Context c, AttributeSet attrs) {
         super(c, attrs);
         context = c;
-
-        // we set a new Path
-        mPath = new Path();
-
-        // and we set a new Paint with the desired attributes
-        mPaint = new Paint();
-        mPaint.setAntiAlias(true);
-        mPaint.setColor(Color.BLACK);
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeJoin(Paint.Join.ROUND);
-        mPaint.setStrokeWidth(4f);
+        path = new Path();
+        setupPaint();
     }
 
-    // override onSizeChanged
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-
-        // your Canvas will draw onto the defined Bitmap
-        mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        mCanvas = new Canvas(mBitmap);
+    private void setupPaint() {
+        paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setColor(Color.BLACK);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeJoin(Paint.Join.ROUND);
+        paint.setStrokeWidth(4f);
     }
 
-    // override onDraw
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        // draw the mPath with the mPaint on the canvas when onDraw
-        canvas.drawPath(mPath, mPaint);
+        canvas.drawPath(path, paint);
     }
 
-    // when ACTION_DOWN start touch according to the x,y values
-    private void startTouch(float x, float y) {
-        mPath.moveTo(x, y);
-        mX = x;
-        mY = y;
+    private void touch(float x, float y) {
+        path.moveTo(x, y);
+        xPos = x;
+        yPos = y;
     }
 
-    // when ACTION_MOVE move touch according to the x,y values
-    private void moveTouch(float x, float y) {
-        float dx = Math.abs(x - mX);
-        float dy = Math.abs(y - mY);
-        if (dx >= TOLERANCE || dy >= TOLERANCE) {
-            mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
-            mX = x;
-            mY = y;
+    private void move(float x, float y) {
+        float xDiff = Math.abs(x - xPos);
+        float yDiff = Math.abs(y - yPos);
+        if (xDiff >= PAINT_SCREEN_BOUNDARY || yDiff >= PAINT_SCREEN_BOUNDARY) {
+            path.quadTo(xPos, yPos, (x + xPos) / 2, (y + yPos) / 2);
+            xPos = x;
+            yPos = y;
         }
     }
 
+    private void stopTouch() {
+        path.lineTo(xPos, yPos);
+    }
+
+    @Override
+    protected void onSizeChanged(int width, int height, int oldwidth, int oldheight) {
+        super.onSizeChanged(width, height, oldwidth, oldheight);
+        Bitmap canvasBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(canvasBitmap);
+    }
+
     public void clearCanvas() {
-        mPath.reset();
+        path.reset();
         invalidate();
     }
 
-    // when ACTION_UP stop touch
-    private void upTouch() {
-        mPath.lineTo(mX, mY);
-    }
-
-    //override the onTouchEvent
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
+        float xCoord = event.getX();
+        float yCoord = event.getY();
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                startTouch(x, y);
+                touch(xCoord, yCoord);
                 invalidate();
                 break;
             case MotionEvent.ACTION_MOVE:
-                moveTouch(x, y);
+                move(xCoord, yCoord);
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
-                upTouch();
+                stopTouch();
                 invalidate();
                 break;
         }
