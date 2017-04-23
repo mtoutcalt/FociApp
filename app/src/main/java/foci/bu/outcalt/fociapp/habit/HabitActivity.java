@@ -25,7 +25,6 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
-import foci.bu.outcalt.fociapp.BaseActivity;
 import foci.bu.outcalt.fociapp.R;
 import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.creative.BrainstormTopicActivity;
