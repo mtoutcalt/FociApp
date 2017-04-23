@@ -1,24 +1,22 @@
-package foci.bu.outcalt.fociapp.calm;
+package foci.bu.outcalt.fociapp.creative;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
 import foci.bu.outcalt.fociapp.R;
-import foci.bu.outcalt.fociapp.creative.BrainstormTopicActivity;
+import foci.bu.outcalt.fociapp.calm.BreatheActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
 import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
@@ -27,64 +25,36 @@ import foci.bu.outcalt.fociapp.timer.TimerActivity;
 import foci.bu.outcalt.fociapp.timer.TimerSessionActivity;
 import foci.bu.outcalt.fociapp.todo.ToDoActivity;
 
-public class BreatheActivity extends AppCompatActivity {
+/**
+ * Created by mark on 4/23/2017.
+ */
 
-    int counter = 1;
-    TextView textView;
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            Bundle bundle = msg.getData();
-            String string = bundle.getString("displayString");
-            TextView myTextView = (TextView) findViewById(R.id.breathText);
-            myTextView.setText(string);
-            textView.postDelayed(updateText, 3875);
-        }
-    };
-
-    Runnable updateText = new Runnable () {
-        public void run() {
-            Message msg = handler.obtainMessage();
-            Bundle bundle = new Bundle();
-            String string = determineTextChange();
-            bundle.putString("displayString", string);
-            msg.setData(bundle);
-            handler.sendMessage(msg);
-        }
-    };
+public class BrainstormTopicActivity extends AppCompatActivity {
+    List<String> topics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.breathe_layout);
+        setContentView(R.layout.brainstorm_topic_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        textView = (TextView) findViewById(R.id.breathText);
-
-        ImageView mImageViewFilling = (ImageView) findViewById(R.id.animate_breathe);
-        ((AnimationDrawable) mImageViewFilling.getBackground()).start();
-
-        textView.postDelayed(updateText, 4000);
+        topics = new ArrayList<>();
     }
 
-    private String determineTextChange() {
-        switch (counter) {
-            case 1:
-                counter++;
-                return "Hold";
-            case 2:
-                counter++;
-                return "BREATHE OUT";
-            case 3:
-                counter++;
-                return "HOLD";
-            case 4:
-                counter = 1;
-                return "BREATHE IN";
-            default: return "ERROR";
+    public void addTopicToList(View view) {
+        EditText editText = (EditText) findViewById(R.id.topicEditText);
+        String topicString = editText.getText().toString();
+        if ( topicString != null  && !topicString.isEmpty()) {
+            topics.add(topicString);
+            Toast.makeText(this, "Added " + topicString + " to List", Toast.LENGTH_SHORT).show();
         }
+        editText.setText("");
+    }
+
+    public void startSession(View view) {
+        Intent intent = new Intent(this, BrainstormActivity.class);
+        intent.putStringArrayListExtra("topics", (ArrayList<String>) topics);
+        startActivity(intent);
     }
 
     @Override
@@ -137,5 +107,4 @@ public class BreatheActivity extends AppCompatActivity {
             default: return super.onOptionsItemSelected(item);
         }
     }
-
 }

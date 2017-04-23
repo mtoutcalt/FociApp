@@ -19,6 +19,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import foci.bu.outcalt.fociapp.R;
 
@@ -29,7 +30,7 @@ import foci.bu.outcalt.fociapp.R;
 public class BrainstormActivity extends Activity {
 
     private BrainstormCanvas customCanvas;
-    String[] topics = {"Topic one", "Topic two"};
+    List<String> topics;
     int topicIndex = 0;
     Bitmap savedBitmap = null;
     private static final int PERMISSION_REQUEST_CODE = 1;
@@ -41,6 +42,7 @@ public class BrainstormActivity extends Activity {
         setContentView(R.layout.brainstorm_layout);
         setPermissions();
         customCanvas = (BrainstormCanvas) findViewById(R.id.signature_canvas);
+        topics = getIntent().getStringArrayListExtra("topics");
     }
 
     private void setPermissions() {
@@ -59,8 +61,8 @@ public class BrainstormActivity extends Activity {
 
     public void nextTopic(View v) {
         TextView topicText = (TextView) findViewById(R.id.topicTextView);
-        if (topicIndex != (topics.length)) {
-            String topicShow = topics[topicIndex];
+        if (topicIndex != (topics.size())) {
+            String topicShow = topics.get(topicIndex);
             topicText.setText(topicShow);
             topicIndex++;
             customCanvas.clearCanvas();

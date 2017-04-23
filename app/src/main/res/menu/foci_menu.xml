@@ -26,6 +26,9 @@
             android:id="@+id/menu_quote"
             android:title="Quote" />
         <item
+            android:id="@+id/menu_brainstorm"
+            android:title="Brainstorm" />
+        <item
             android:id="@+id/menu_session_history"
             android:title="Session History" />
     </group>

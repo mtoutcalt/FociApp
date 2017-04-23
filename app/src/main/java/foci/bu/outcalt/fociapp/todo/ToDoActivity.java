@@ -34,6 +34,7 @@ import java.util.Date;
 
 import foci.bu.outcalt.fociapp.R;
 import foci.bu.outcalt.fociapp.calm.BreatheActivity;
+import foci.bu.outcalt.fociapp.creative.BrainstormTopicActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
 import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
@@ -246,6 +247,10 @@ public class ToDoActivity extends AppCompatActivity implements GestureDetector.O
                 return true;
             case R.id.menu_quote:
                 intent = new Intent(this, QuoteActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_brainstorm:
+                intent = new Intent(this, BrainstormTopicActivity.class);
                 this.startActivity(intent);
                 return true;
             case R.id.menu_session_history:

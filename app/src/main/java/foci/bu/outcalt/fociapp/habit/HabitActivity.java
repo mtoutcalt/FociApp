@@ -28,6 +28,7 @@ import java.util.List;
 import foci.bu.outcalt.fociapp.BaseActivity;
 import foci.bu.outcalt.fociapp.R;
 import foci.bu.outcalt.fociapp.calm.BreatheActivity;
+import foci.bu.outcalt.fociapp.creative.BrainstormTopicActivity;
 import foci.bu.outcalt.fociapp.home.HomeActivity;
 import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
 import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
@@ -208,6 +209,10 @@ public class HabitActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_quote:
                 intent = new Intent(this, QuoteActivity.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menu_brainstorm:
+                intent = new Intent(this, BrainstormTopicActivity.class);
                 this.startActivity(intent);
                 return true;
             case R.id.menu_session_history:

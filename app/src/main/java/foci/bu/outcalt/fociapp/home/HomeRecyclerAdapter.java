@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import foci.bu.outcalt.fociapp.R;
 import foci.bu.outcalt.fociapp.calm.BreatheActivity;
+import foci.bu.outcalt.fociapp.creative.BrainstormTopicActivity;
 import foci.bu.outcalt.fociapp.habit.HabitActivity;
 import foci.bu.outcalt.fociapp.inspire.QuoteActivity;
 import foci.bu.outcalt.fociapp.tab.TabLayoutActivity;
@@ -67,6 +68,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                             context.startActivity(intent);
                             break;
                         case 6:
+                            intent = new Intent(context, BrainstormTopicActivity.class);
+                            context.startActivity(intent);
+                            break;
+                        case 7:
                             intent = new Intent(context, TabLayoutActivity.class);
                             context.startActivity(intent);
                             break;
@@ -84,6 +89,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             "Habit",
             "Breathe",
             "Quotes",
+            "Brainstorm",
             "Info"};
 
     private String[] details = {"" +
@@ -93,6 +99,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             "Don't Break the Chain",
             "Follow your breathe to relax",
             "Get quotes of the day to get you inspired",
+            "Open your creativity by sketching and drawing on topic words.  Save your drawings for later.",
             "Information about the app"
             };
 
@@ -103,6 +110,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             R.drawable.ic_event_black_24dp,
             R.drawable.ic_menu_gallery,
             R.drawable.ic_face_black_24dp,
+            R.drawable.ic_brush_black_24dp,
             android.R.drawable.ic_dialog_info,
     };
 

@@ -29,6 +29,7 @@
         android:layout_height="54dp"
         android:text="Brainstorm by sketching about your chosen topics!  No judgments."
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="18sp" />
 
     <Button
