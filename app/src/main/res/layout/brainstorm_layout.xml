@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:id="@+id/testit">
+
+    <foci.bu.outcalt.fociapp.creative.BrainstormCanvas
+        android:id="@+id/signature_canvas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:onClick="clearCanvas"
+        android:text="Clear Canvas" />
+
+    <TextView
+        android:id="@+id/topicTextView"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:text="Brainstorm by sketching about your chosen topics!  No judgments."
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/topicBut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Word"
+        android:layout_gravity="bottom|left"
+        android:onClick="nextTopic" />
+
+
+    <Button
+        android:id="@+id/screenBut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Screenshot"
+        android:layout_gravity="bottom|center"
+        android:onClick="screenShot" />
+
+</FrameLayout>
